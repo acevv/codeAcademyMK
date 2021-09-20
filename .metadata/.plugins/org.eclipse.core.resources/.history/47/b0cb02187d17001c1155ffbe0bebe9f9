@@ -1,0 +1,36 @@
+package doctorExample;
+
+public class Surgeon extends Doctor {
+
+//	private String speciality;
+//	private String name;
+//
+//	public String getSpeciality() {
+//		return speciality;
+//	}
+//
+//	public void setSpeciality(String speciality) {
+//		this.speciality = speciality;
+//	}
+//
+//	public String getName() {
+//		return name;
+//	}
+//
+//	public void setName(String name) {
+//		this.name = name;
+//	}
+//	
+	// overriden metod od klasata Doctor, no nema nisto smeneto
+	public void getInfo() {
+		
+		System.out.println("Doctor name: " + get.name + ", Speciality: " + get.speciality);
+		
+	}
+	
+	// overriden metod od klasata Doctor
+	public void treatPatient() {
+		System.out.println("Doctor " + this.name + " is making a surgery on the patient.");
+	}
+
+}

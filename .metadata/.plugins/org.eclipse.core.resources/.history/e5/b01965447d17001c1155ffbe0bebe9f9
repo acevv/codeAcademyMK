@@ -1,0 +1,24 @@
+package doctorExample;
+
+public class Hospital {
+
+	public static void main(String[] args) {
+
+		Doctor doc = new Doctor();
+		doc.name = "John";
+		doc.speciality = "Doctor";
+		doc.getInfo();
+		doc.treatPatient();
+
+		Surgeon sur = new Surgeon();
+		sur.name = "Mike";
+		sur.speciality = "Surgeon";
+		sur.getInfo();
+		sur.treatPatient();
+
+//		Problem ne dozvoluva da se konvertira od Doktor vo Surgeon
+//		Doctor dok = new Surgeon();
+
+	}
+
+}

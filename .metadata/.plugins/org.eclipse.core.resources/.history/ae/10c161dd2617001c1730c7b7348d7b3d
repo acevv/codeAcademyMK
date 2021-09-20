@@ -1,0 +1,19 @@
+package doctorSurgeon;
+
+public class Hospital {
+
+	public static void main(String[] args) {
+
+		Doctor doc = new Doctor();
+//		doc.setName("John");
+//		doc.setSpeciality("Doctor");
+		System.out.println(doc.getInfo());
+
+		Surgeon sur = new Surgeon();
+		sur.setName("Mike");
+		sur.setSpeciality("Surgeon");
+		System.out.println(sur.getInfo());
+
+	}
+
+}

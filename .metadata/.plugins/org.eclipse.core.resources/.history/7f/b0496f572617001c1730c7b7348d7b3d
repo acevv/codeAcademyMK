@@ -1,0 +1,18 @@
+package doctorSurgeon;
+
+public class Surgeon {
+//	public void getSurgeonDetails() {
+//		System.out.println("Surgeon details");
+//	}
+//
+//	// overrided method
+//	public void getDoctorDetails() {
+//		System.out.println("Doctor details modified - from Surgeon class");
+//	}
+	public String getInfo() {
+
+		return "Doctor name: " + this.name + "\nDoctor speciality: " + this.speciality;
+
+	}
+
+}

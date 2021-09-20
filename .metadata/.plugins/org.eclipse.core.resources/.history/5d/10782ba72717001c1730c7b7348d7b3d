@@ -1,0 +1,34 @@
+package doctorSurgeon;
+
+public class Surgeon {
+
+	private String speciality;
+	private String name;
+
+	public String getSpeciality() {
+		return speciality;
+	}
+
+	public void setSpeciality(String speciality) {
+		this.speciality = speciality;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void getInfo() {
+		if (this.speciality == "surgeon") {
+				System.out.println("Doctor name: " + this.name + "\nI am a surgeon");
+		} else {
+			System.out.println("Doctor name: " + this.name + "\nI am a regular doctor");
+		}
+		
+
+	}
+
+}

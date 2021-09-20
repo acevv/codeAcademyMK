@@ -1,0 +1,22 @@
+package nizi;
+
+public class NiziExample3 {
+	
+	public static void passByReferrence(String niza[]) {
+		
+		niza[0] = "Changed";
+		
+	}
+	
+	public static void main(String[] args) {
+		
+		String niza[] = {"Apple", "Mango", "Orange"};
+		
+		System.out.println("Pred da ja povikame funkcijata: " + niza[0]);
+		
+		passByReferrence(niza);
+		
+		System.out.println("Otkako ja povikavme funkcijata: " + niza[0]);
+	}
+
+}

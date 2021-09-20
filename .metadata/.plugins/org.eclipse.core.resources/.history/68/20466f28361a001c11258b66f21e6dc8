@@ -1,0 +1,22 @@
+package nizi;
+
+public class NiziExample {
+	
+	public static void main(String[] args) {
+		
+		Integer nizaOdInteger[];
+		nizaOdInteger = new Integer[10];
+		
+		
+		nizaOdInteger[0] = 12;
+		nizaOdInteger[2] = 31;
+		
+		Integer[] nizaOdInt;
+		
+		nizaOdInt = new Integer[10];
+		
+		
+		
+	}
+
+}
