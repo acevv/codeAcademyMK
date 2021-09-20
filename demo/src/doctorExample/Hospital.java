@@ -4,7 +4,7 @@ public class Hospital {
 
 	public static void main(String[] args) {
 
-		Doctor doc = new Doctor();
+		Doctor doc = new Doctor("Lekar", "John");
 		doc.name = "John";
 		doc.speciality = "Doctor";
 		doc.getInfo();
@@ -21,6 +21,17 @@ public class Hospital {
 		dok.speciality = "Doctor";
 		dok.getInfo();
 		dok.treatPatient(); // se povikuva overriden metodot od Child klasata Surgeon
+		System.out.println(dok.toString());
+		
+		// Arrays
+		
+		Doctor doktori[] = {new Doctor("Stomatolog", "Tome"), new Doctor("Ocen doktor", "Trajce"), new Doctor("Otorinoralingolog", "Zoki")};
+		
+		for (Doctor doctor : doktori) {
+			System.out.println("Ime i prezime: " + doctor.getName());
+		}
+		
+		
 
 	}
 

@@ -1,13 +1,14 @@
 package dogExample;
 
 public class Dog {
+
 	String breed;
 	String size;
 	Integer age;
 	String color;
-	
+
 	public String getInfo() {
-		return "Breed is: "+breed+"\nSize is: "+size+"\nAge is: "+age+"\nColor is: "+color;
+		return "Breed is: " + breed + "\nSize is: " + size + "\nAge is: " + age + "\nColor is: " + color;
 	}
 
 }

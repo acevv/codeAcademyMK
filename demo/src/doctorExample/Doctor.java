@@ -13,4 +13,15 @@ public class Doctor {
 		System.out.println("Doctor " + this.name + " is checking the patient.");
 	}
 
+	@Override
+	public String toString() {
+		return "Doctor [speciality=" + speciality + ", name=" + name + "]";
+	}
+
+	public Doctor(String speciality, String name) {
+		super();
+		this.speciality = speciality;
+		this.name = name;
+	}
+
 }
