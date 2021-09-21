@@ -5,33 +5,35 @@ public class Hospital {
 	public static void main(String[] args) {
 
 		Doctor doc = new Doctor("Lekar", "John");
-		doc.name = "John";
-		doc.speciality = "Doctor";
 		doc.getInfo();
 		doc.treatPatient();
+		System.out.println(doc.toString());
 
-		Surgeon sur = new Surgeon();
-		sur.name = "Mike";
-		sur.speciality = "Surgeon";
-		sur.getInfo(); 		// definiran metod vo Parent klasata Doctor, no moze da go koristi i Child klasata Surgeon
-		sur.treatPatient(); // overriden metod vo klasata Surgeon od klasata Doctor
+		System.out.println("=======================================================================");
 
-		Doctor dok = new Surgeon(); // dok e od tipot Doctor no moze da gi pristapi metodite od tipot Surgeon
-		dok.name = "Ray";
-		dok.speciality = "Doctor";
+		Surgeon sur = new Surgeon("Hirurg", "Mike");
+		sur.getInfo(); // definiran metod vo Parent klasata Doctor, no moze da go koristi i Child klasata Surgeon				
+		sur.treatPatient(); // Overridden metod vo klasata Surgeon od klasata Doctor
+		System.out.println(sur.toString());
+
+		System.out.println("=======================================================================");
+
+		Doctor dok = new Surgeon("Kardiolog", "Zan"); // dok e od tipot Doctor no moze da gi pristapi metodite od
+															// tipot
+															// Surgeon
 		dok.getInfo();
 		dok.treatPatient(); // se povikuva overriden metodot od Child klasata Surgeon
 		System.out.println(dok.toString());
-		
+
+		System.out.println("=======================================================================");
 		// Arrays
-		
-		Doctor doktori[] = {new Doctor("Stomatolog", "Tome"), new Doctor("Ocen doktor", "Trajce"), new Doctor("Otorinoralingolog", "Zoki")};
-		
+
+		Doctor doktori[] = { new Doctor("Stomatolog", "Tom"), new Doctor("Otorinolaringolog", "Jay"),
+				new Doctor("Otorinoralingolog", "Zane"), doc, sur, dok };
+
 		for (Doctor doctor : doktori) {
 			System.out.println("Ime i prezime: " + doctor.getName());
 		}
-		
-		
 
 	}
 
