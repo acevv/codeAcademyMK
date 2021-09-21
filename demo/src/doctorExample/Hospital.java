@@ -18,9 +18,7 @@ public class Hospital {
 
 		System.out.println("=======================================================================");
 
-		Doctor dok = new Surgeon("Kardiolog", "Zan"); // dok e od tipot Doctor no moze da gi pristapi metodite od
-															// tipot
-															// Surgeon
+		Doctor dok = new Surgeon("Kardiolog", "Zan"); // dok e od tipot Doctor no moze da gi pristapi metodite od tipot Surgeon
 		dok.getInfo();
 		dok.treatPatient(); // se povikuva overriden metodot od Child klasata Surgeon
 		System.out.println(dok.toString());
@@ -31,7 +29,7 @@ public class Hospital {
 		Doctor doktori[] = { new Doctor("Stomatolog", "Tom"), new Doctor("Otorinolaringolog", "Jay"),
 				new Doctor("Otorinoralingolog", "Zane"), doc, sur, dok };
 
-		for (Doctor doctor : doktori) {
+		for (Doctor doctor : doktori) { 
 			System.out.println("Ime i prezime: " + doctor.getName());
 		}
 
