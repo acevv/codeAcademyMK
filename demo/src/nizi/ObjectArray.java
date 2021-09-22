@@ -5,17 +5,31 @@ public class ObjectArray {
 	public static void main(String[] args) {
 
 		Account obj[] = new Account[2];
-		obj[0] = new Account();
-		obj[1] = new Account();
 
-		obj[0].setData(1, 2);
-		obj[1].setData(3, 4);
+		Account prv = new Account(1, 2);
+		Account vtor = new Account(3, 4);
 
-		System.out.println("For array element 0");
-		obj[0].showData();
+		obj[0] = prv;
+		obj[1] = vtor;
 
-		System.out.println("For array element 1");
-		obj[1].showData();
+		System.out.println(obj[0].toString());
+		System.out.println(obj[1].toString());
+
+		// niza od tip akaunt i e dolga so 2 objekti, parametri 6:55
+		Account niza[] = new Account[2];
+		
+		// go instancirame prviot objekt i go stavame vo nizata na prvoto mesto
+		niza[0] = new Account();
+		// go instancirame vtoriot objekt i go stavame vo nizata na vtoroto mesto
+		niza[1] = new Account();
+		
+		// zadavame parametri na prviot objekt
+		niza[0].setData(5, 6);
+		// zadavame parametri na vtoriot objekt
+		niza[1].setData(7, 8);
+		
+		niza[0].showData();
+		niza[1].showData();
 
 	}
 
