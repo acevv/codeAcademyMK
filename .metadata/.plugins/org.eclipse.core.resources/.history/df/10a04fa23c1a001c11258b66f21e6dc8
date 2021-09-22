@@ -1,9 +1,0 @@
-package nizi;
-
-public class NiziExample3 {
-	
-	public static void passByReferrence(String niza][]) {
-		
-	}
-
-}

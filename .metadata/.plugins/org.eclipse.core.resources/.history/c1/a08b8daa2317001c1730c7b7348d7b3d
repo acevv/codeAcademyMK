@@ -1,7 +1,0 @@
-package main;
-
-public class Dog {
-	System.out.println("Hello WOrld");
-	
-
-}
