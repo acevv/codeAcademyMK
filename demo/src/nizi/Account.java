@@ -3,6 +3,7 @@ package nizi;
 public class Account {
 	int a;
 	int b;
+//	int c;
 	public void setData(int c, int d) {
 		a=c;
 		b=d;
