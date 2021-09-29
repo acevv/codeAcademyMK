@@ -4,16 +4,13 @@ import java.util.Arrays;
 
 public class Exercise1 {
 
-	public static Integer largeNumCount(Integer[] input) {
+	public static Integer largeNumCount(Integer[] array) {
 		int count = 0;
-		for (int i = 0; i < input.length; i++) {
-			int counter = 0;
-			if (input[i] > 2000) {
-				counter++;
-				counter = count;
-
-			}
-			count = counter;
+		for (int i = 0; i < array.length; i++) {
+			
+			if (array[i] > 2000) {
+				count++;
+			}			
 		}
 		return count;
 	}
@@ -21,7 +18,7 @@ public class Exercise1 {
 	public static void main(String[] args) {
 
 		// Sortirajte gi nizite
-		Integer celiBroevi[] = { 1789, 2035, 1899, 1456, 2013, 1458, 2458, 1254, 1472, 2365, 1465, 2165, 1457, 2456 };
+		Integer celiBroevi[] = { 1789, 2035, 1899, 1456, 2013, 1458, 2458, 1254, 1472, 2365, 1465, 2165, 1457, 2456, 2300, 2193 };
 
 		String tekst[] = { "Java", "Python", "C#", "C", "C++" };
 
@@ -41,7 +38,7 @@ public class Exercise1 {
 		largeNumCount(celiBroevi);
 		
 		
-		Integer pogolemiBroevi[] = new Integer[6];
+		Integer pogolemiBroevi[] = new Integer[largeNumCount(celiBroevi)];
 		int j = 0;
 
 		for (int i = 0; i < celiBroevi.length; i++) {
@@ -55,5 +52,17 @@ public class Exercise1 {
 		System.out.println(Arrays.toString(pogolemiBroevi));
 
 	}
+	
+//	public Integer coountNumbersLargerThan2k(Integer niza[]) {
+//		
+//		Integer result = 0;
+//		for(int i = 0; i < niza.length; i++) {
+//			if(niza[i] > 2000) {
+//				result++;
+//			}
+//		}
+//		
+//		return result;
+//	}
 
 }
