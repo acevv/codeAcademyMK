@@ -40,8 +40,17 @@ public class Exercise7 {
 			niza [i] = niza [i + 1];
 			
 		}
+		
+		Integer novaModificiranaNiza[] = new Integer[9];
+		
+		for (int i = 0; i < novaModificiranaNiza.length; i++) {
+			novaModificiranaNiza[i] = niza[i];
+		}
+		
 		System.out.println("Modificiranata niza: " + Arrays.toString(niza));
 
+		System.out.println("Nova Modificirana niza" + Arrays.toString(novaModificiranaNiza));
+		
 	}
 
 	private static Integer findIndex(Integer n, Integer[] niza) {
