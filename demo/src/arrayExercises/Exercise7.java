@@ -2,8 +2,7 @@ package arrayExercises;
 
 import java.util.Arrays;
 
-// TODO resenieto od nizata da se premesti vo nova niza pokratka za eden element
-// TODO 11ta i 10ta zadaca da se vidat
+
 public class Exercise7 {
 
 	public static void main(String[] args) {
