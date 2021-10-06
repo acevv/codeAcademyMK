@@ -12,7 +12,7 @@ public class Exercise14 {
 		System.out.println("Array 1: " + Arrays.toString(niza));
 		System.out.println("Array 2: " + Arrays.toString(niza2));
 		
-		HashSet
+		
 		for (int i = 0; i < niza.length; i++) {
 			
 		}
