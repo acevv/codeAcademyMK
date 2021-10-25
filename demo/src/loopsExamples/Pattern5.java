@@ -10,11 +10,11 @@ public class Pattern5 {
 
 		// eden for za da printa nov red
 		for (int i = 1; i <= stars; i++) {
-			System.out.print(i+" ");
+			
 
 			// for za prazni mesta pred prvata zvezda
 			for (int j = i; j < stars; j++) {
-				System.out.print(j);
+				System.out.print(" ");
 				// counter-ot sluzi da presmeta kolku mesta falat za da se izramni redot i da se
 				// napravi polovina elka
 				counter++;
@@ -30,7 +30,7 @@ public class Pattern5 {
 
 			// for za ispisuvanje na polovina obicna elka
 			for (int j3 = 1; j3 < i; j3++) {
-				System.out.print(j3);
+				System.out.print("*");
 			}
 			System.out.println();
 		}

@@ -30,10 +30,10 @@ public class BreakDown {
 		
 		for (int j = 0; j < 5; j++) {
 			
-			for (int j2 = 0; j2 < 5; j2++) {
-				System.out.println(j + ", " + j2);
-				break;
-			}
+//			for (int j2 = 0; j2 < 5; j2++) {
+//				System.out.println(j + ", " + j2);
+//				break;
+//			}
 		}
 		
 		
