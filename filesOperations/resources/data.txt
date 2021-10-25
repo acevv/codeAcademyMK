@@ -1,0 +1,7 @@
+name=Aleksandar
+surname=Acev
+phone=070777666
+email=acev_aleksandar@hotmail.com
+address.city=Strumica
+address.number=23
+address.street=Partizanska
