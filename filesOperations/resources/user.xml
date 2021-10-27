@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<user>
+		<name>Aleksandar</name>
+		<surname>Acev</surname>
+		<phone>070777666</phone>
+		<email>email@email.com</email>
+	<listOfAdress>
+		<address name="doma"> 
+			<street>Partizanska</street>
+			<number>12</number>
+			<city>Skopje</city>
+		</address>s
+		<address name="rabota"> 
+			<street>Mladinska</street>
+			<number>13</number>
+			<city>Strumica</city>
+		</address>
+	</listOfAdress>
+</user>
