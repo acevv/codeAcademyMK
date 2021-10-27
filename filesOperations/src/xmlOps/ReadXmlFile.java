@@ -1,10 +1,20 @@
 package xmlOps;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 public class ReadXmlFile {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
 		
 		// Student(name, surname, email, phone, address, index, subjects, grades)
 		// Address(street, number, city
@@ -109,28 +119,44 @@ public class ReadXmlFile {
 		
 		System.out.println(student1.toString());
 		
-		// read XML file
-//		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-//		
-//		DocumentBuilder db = dbf.newDocumentBuilder();
-//		
-//		File f = new File("resources/exampleStudent1.xml");
-//		
-//		Document doc = db.parse(f);
+//		 read XML file
+		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		
+		DocumentBuilder db = dbf.newDocumentBuilder();
 		
+		File f = new File("resources/exampleStudent1.xml");
 		
+		Document doc = db.parse(f);
 		
+		doc.getDocumentElement().normalize();
 		
+
+		System.out.println("Root element:" + doc.getDocumentElement().getNodeName());
 		
+		NodeList list = doc.getElementsByTagName("student");
 		
+		for (int i = 0; i < list.getLength(); i++) {
 			
+			Node node = list.item(i);
 			
+			if(node.getNodeType() == Node.ELEMENT_NODE) {
+				Element e = (Element) node;
+				
+//				String id = e.getAttribute("studentId");
+				
+				String name = e.getElementsByTagName("name").item(0).getTextContent();
+				System.out.println(name);
+				
+				String surname = e.getElementsByTagName("surname").item(0).getTextContent();
+				System.out.println(surname);
+				
+			}
+			
+		}
 		
 	}
 
 	private static Double prosek(ArrayList<Grade> grades) {
-		
 		Double sum = 0.00;
 		Double gpa = 0.00;
 		
@@ -140,6 +166,4 @@ public class ReadXmlFile {
 		gpa = sum / grades.size();
 		return gpa;
 	}
-	
-
 }
