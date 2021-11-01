@@ -265,8 +265,8 @@ public class ReadXmlFile {
 	}
 
 	private static void getBook(XPath xp, String path, Document doc) throws XPathExpressionException {
-		String subject = (String) xp.evaluate(path, doc, XPathConstants.STRING);
-		System.out.println(subject);
+		String element = (String) xp.evaluate(path, doc, XPathConstants.STRING);
+		System.out.println(element);
 	}
 
 	private static Double prosek(ArrayList<Grade> grades) {
