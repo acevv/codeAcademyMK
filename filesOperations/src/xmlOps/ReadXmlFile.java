@@ -6,6 +6,11 @@ import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -14,7 +19,7 @@ import org.xml.sax.SAXException;
 
 public class ReadXmlFile {
 
-	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
+	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException, XPathExpressionException {
 		
 		// Student(name, surname, email, phone, address, index, subjects, grades)
 		// Address(street, number, city
@@ -248,6 +253,11 @@ public class ReadXmlFile {
 			}
 			
 		}
+		
+		XPathFactory xpf = XPathFactory.newInstance();
+		XPath xp = xpf.newXPath();
+		String subject = (String) xp.evaluate("student/subjects/subject", doc, XPathConstants.STRING);
+		System.out.println("XPATH FACTORY"+subject);
 		
 	}
 
