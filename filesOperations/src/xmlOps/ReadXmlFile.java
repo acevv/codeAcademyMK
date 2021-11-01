@@ -259,6 +259,14 @@ public class ReadXmlFile {
 		String subject = (String) xp.evaluate("student/subjects/subject", doc, XPathConstants.STRING);
 		System.out.println("XPATH FACTORY"+subject);
 		
+		getBook(xp, "student/surname", doc);
+		
+		
+	}
+
+	private static void getBook(XPath xp, String path, Document doc) throws XPathExpressionException {
+		String subject = (String) xp.evaluate(path, doc, XPathConstants.STRING);
+		System.out.println(subject);
 	}
 
 	private static Double prosek(ArrayList<Grade> grades) {
@@ -271,4 +279,6 @@ public class ReadXmlFile {
 		gpa = sum / grades.size();
 		return gpa;
 	}
+	
+	
 }
