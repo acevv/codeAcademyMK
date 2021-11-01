@@ -129,7 +129,7 @@ public class ReadXmlFile {
 		
 //		doc.getDocumentElement().normalize(); - zosto sluzi ova ?
 		
-		//	read root element		     	doc locate root 	    give me its name
+		//	read root element		     	doc locate root 	    get root eleement name
 		System.out.println("Root element:" + doc.getDocumentElement().getNodeName());
 		
 		// array od student elementi
