@@ -130,13 +130,10 @@ public class ReadXmlFile {
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		DocumentBuilder db = dbf.newDocumentBuilder();
 		Document doc = db.parse(f);
+		doc.getDocumentElement().normalize();
 
-//		doc.getDocumentElement().normalize(); - zosto sluzi ova ?
-
-		// read root element doc locate root get root eleement name
 		System.out.println("Root element:" + doc.getDocumentElement().getNodeName());
 
-		// array od student elementi
 		NodeList list = doc.getElementsByTagName("student");
 
 		for (int i = 0; i < list.getLength(); i++) {
