@@ -12,6 +12,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Subject {
 
 	// Subjects(name, schedule, books, professor)
+	
+	
 	@XmlElement
 	private String name;
 	@XmlElement

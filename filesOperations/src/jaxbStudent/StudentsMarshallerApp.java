@@ -82,7 +82,7 @@ public class StudentsMarshallerApp {
 
 		subjects.add(programiranje);
 
-//		student1.setSubjects(subjects);
+		student1.setSubjects(subjects);
 
 		ArrayList<Grade> oceni = new ArrayList<>();
 
@@ -104,9 +104,9 @@ public class StudentsMarshallerApp {
 		Double gpa = prosek(student1.getGrades());
 
 		student1.setGpa(gpa);
-		
+
 		// STUDENT 2
-		
+
 		Student student2 = new Student();
 		Address adresa2 = new Address();
 		Phone phone2 = new Phone();
@@ -178,8 +178,7 @@ public class StudentsMarshallerApp {
 
 		subjects2.add(programiranje2);
 
-		
-//		student2.setSubjects(subjects2);
+		student2.setSubjects(subjects2);
 
 		ArrayList<Grade> oceni2 = new ArrayList<>();
 
@@ -205,9 +204,6 @@ public class StudentsMarshallerApp {
 		Students s = new Students();
 		s.getStudents().add(student1);
 		s.getStudents().add(student2);
-		
-//		ArrayList<Predmet> predmeti = new ArrayList<>();
-//		predmeti.add(subjects2);
 
 		try {
 			JAXBContext context = JAXBContext.newInstance(Students.class);

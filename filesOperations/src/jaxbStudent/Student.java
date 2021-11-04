@@ -54,7 +54,7 @@ public class Student {
 		this.email = email;
 		this.address = address;
 		this.index = index;
-//		this.subjects = subjects;
+		this.subjects = subjects;
 		this.grades = grades;
 		this.gpa = gpa;
 	}
@@ -107,13 +107,13 @@ public class Student {
 		this.index = index;
 	}
 
-//	public ArrayList<Subject> getSubjects() {
-//		return subjects;
-//	}
+	public ArrayList<Subject> getSubjects() {
+		return subjects;
+	}
 
-//	public void setSubjects(ArrayList<Subject> subjects) {
-//		this.subjects = subjects;
-//	}
+	public void setSubjects(ArrayList<Subject> subjects) {
+		this.subjects = subjects;
+	}
 
 	public ArrayList<Grade> getGrades() {
 		return grades;
