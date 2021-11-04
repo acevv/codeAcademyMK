@@ -7,13 +7,11 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name="predmet")
+@XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Subject {
 
 	// Subjects(name, schedule, books, professor)
-	
-	
 	@XmlElement
 	private String name;
 	@XmlElement
