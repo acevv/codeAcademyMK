@@ -5,7 +5,7 @@ public class Employee {
 	private String firstName;
 	private String lastName;
 	private String profession;
-	private  String location;
+	private String location;
 
 	public void showStats() {
 		System.out.println("Ime: " + firstName);
