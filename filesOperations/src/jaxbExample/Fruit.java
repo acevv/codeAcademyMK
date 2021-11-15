@@ -14,7 +14,7 @@ public class Fruit {
 	@XmlAttribute
 	Integer id;
 	
-	@XmlElement(name="ovoshje")
+	@XmlElement
 	String name;
 	
 	@XmlElement

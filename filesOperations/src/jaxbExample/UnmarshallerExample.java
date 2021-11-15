@@ -12,15 +12,15 @@ public class UnmarshallerExample {
 		
 		
 		try {
-			JAXBContext context = JAXBContext.newInstance(Fruit.class);
+			JAXBContext context = JAXBContext.newInstance(Fruits.class);
 
 			File file = new File("/Users/acev/Desktop/fruit.xml");
 
 			Unmarshaller unmarshaller = context.createUnmarshaller();
 
-			Fruit f = (Fruit) unmarshaller.unmarshal(file);
+			Fruits f = (Fruits) unmarshaller.unmarshal(file);
 
-			System.out.println("name: " + f.getName() + "\nid: " + f.getId() + " \nprice: " + f.getPrice());
+			System.out.println("name: " + f.getFruits().get(1).getName());
 
 		} catch (JAXBException e) {
 			e.printStackTrace();

@@ -1,4 +1,4 @@
-package jaxbExample;
+package articlesExample;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,23 +10,17 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Fruits {
-	
+public class Articles {
+
 	@XmlElement
-	List<Fruit> fruits = new ArrayList<>();
+	List<Article> articles = new ArrayList<Article>();
 
-	public List<Fruit> getFruits() {
-		return fruits;
+	public List<Article> getArticles() {
+		return articles;
 	}
 
-	public void setFruits(List<Fruit> fruits) {
-		this.fruits = fruits;
-	}
-
-	public Fruits() {
+	public Articles() {
 		super();
 	}
-	
-	
 
 }
