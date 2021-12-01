@@ -1,4 +1,4 @@
-package main;
+package jaxb;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,11 +7,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import jaxb.Product;
-import jaxb.Products;
-import jaxb.ProductsJAXB;
+//import jaxb.Product;
+//import jaxb.Products;
+//import ProductsJAXB;
 
-public class Main {
+public class Aplikacija {
 
 	public static void main(String[] args) {
 
