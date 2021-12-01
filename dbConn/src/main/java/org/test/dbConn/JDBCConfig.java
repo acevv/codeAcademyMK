@@ -12,7 +12,7 @@ public class JDBCConfig {
 	private static String jdbcUsername = "postgres";
 	private static String jdbcPassword = "1104";
 
-	private static Connection getConnection() {
+	public static Connection getConnection() {
 		Connection connection = null;
 		try {
 			connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
@@ -33,7 +33,7 @@ public class JDBCConfig {
 			} else {
 				System.out.println("Connection failed.");
 			}
-			
+
 			Statement statement = con.createStatement();
 			ResultSet resultSet = statement.executeQuery("SELECT VERSION()");
 			if (resultSet.next()) {

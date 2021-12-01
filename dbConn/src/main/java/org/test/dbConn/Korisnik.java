@@ -1,11 +1,13 @@
 package org.test.dbConn;
 
-public class UserDAO {
+public class Korisnik {
 
 	private Integer id;
 	private String name;
 	private String email;
 	private String user_pass;
+	
+	
 	public Integer getId() {
 		return id;
 	}
@@ -30,14 +32,14 @@ public class UserDAO {
 	public void setUser_pass(String user_pass) {
 		this.user_pass = user_pass;
 	}
-	public UserDAO(Integer id, String name, String email, String user_pass) {
+	public Korisnik(Integer id, String name, String email, String user_pass) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.user_pass = user_pass;
 	}
-	public UserDAO() {
+	public Korisnik() {
 		super();
 	}
 
