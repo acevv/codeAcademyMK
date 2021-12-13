@@ -15,16 +15,16 @@ public class App {
 //		dao.insertUserInDB(user2);
 		List<Korisnik> allUsers = new ArrayList<Korisnik>();
 
-		allUsers = dao.getAllUsers();
+//		allUsers = dao.getAllUsers();
 		
 		for (Korisnik korisnik : allUsers) {
 			System.out.println(korisnik.getName());
 		}
 
 //		System.out.println(allUsers.get(0).getName());
-//		Korisnik user3 = new Korisnik();
-//		user3 = dao.getUserByID(2);
-//		System.out.println(user3.getName());
+		Korisnik user3 = new Korisnik();
+		user3 = dao.getUserByID(2);
+		System.out.println(user3.getName());
 		
 //		Korisnik user4 = new Korisnik(5, "Mite", "mitkoe@email.com", "T133");
 //		System.out.println(dao.insertUserInDBwithPreparedStatement(user4));

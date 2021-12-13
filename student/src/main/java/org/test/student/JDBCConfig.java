@@ -1,14 +1,12 @@
-	package org.test.dbConn;
+package org.test.student;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class JDBCConfig {
-
-	private static String jdbcURL = "jdbc:postgresql://localhost:5432/users";
+	
+	private static String jdbcURL = "jdbc:postgresql://localhost:5432/student";
 	private static String jdbcUsername = "postgres";
 	private static String jdbcPassword = "1104";
 
@@ -22,24 +20,11 @@ public class JDBCConfig {
 		}
 		return connection;
 	}
-
+	
 	public static void main(String[] args) {
-
 		try {
-			Connection con = getConnection();
-
-			if (con != null) {
-				System.out.println("Connected successfully");
-			} else {
-				System.out.println("Connection failed.");
-			}
-
-			Statement statement = con.createStatement();
-			ResultSet resultSet = statement.executeQuery("SELECT VERSION()");
-			if (resultSet.next()) {
-				System.out.println(resultSet.getString(1));
-			}
-
+			getConnection();
+			System.out.println("Successfuly connected.");
 		} catch (Exception e) {
 			System.out.println(e);
 		}

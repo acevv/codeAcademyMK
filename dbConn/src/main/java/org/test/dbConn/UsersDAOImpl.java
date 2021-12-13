@@ -22,7 +22,7 @@ public class UsersDAOImpl implements UsersDAO {
 			String query = "INSERT INTO public.Korisnik (id, name, email, user_pass) VALUES (" + user.getId() + ",'"
 					+ user.getName() + "','" + user.getEmail() + "','" + user.getUser_pass() + "');";
 
-			ResultSet rs = stmt.executeQuery(query);
+			stmt.executeQuery(query);
 			res = "User has been inserted successfully";
 
 		} catch (Exception e) {
