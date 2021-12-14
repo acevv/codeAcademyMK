@@ -65,7 +65,7 @@ public class AddressDAOImpl implements AddressDAO {
 				addr.setStreet(rs.getString("street"));
 				addr.setNumber(rs.getString("number"));
 				addr.setCity(rs.getString("city"));
-			} 
+			}
 
 		} catch (Exception e) {
 			System.out.println(e);

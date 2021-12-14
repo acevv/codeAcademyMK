@@ -65,11 +65,11 @@ public class StudentDAOImpl implements StudentDAO {
 			Statement stmt = conn.createStatement();
 			String query = "SELECT COUNT(*) as students FROM public.student";
 			ResultSet rs = stmt.executeQuery(query);
-			while(rs.next()) {
+			while (rs.next()) {
 				noOfStudents = rs.getInt(1);
 			}
 			result = "Number of students in the database: " + noOfStudents;
-			
+
 		} catch (Exception e) {
 			System.out.println(e);
 		}
@@ -84,7 +84,7 @@ public class StudentDAOImpl implements StudentDAO {
 			Statement stmt = conn.createStatement();
 			String query = "SELECT * FROM public.student WHERE indeks = '" + id + "';";
 			ResultSet rs = stmt.executeQuery(query);
-			while(rs.next()) {
+			while (rs.next()) {
 				s.setIndeks(rs.getString("indeks"));
 				s.setName(rs.getString("name"));
 				s.setSurname(rs.getString("surname"));
