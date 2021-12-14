@@ -9,7 +9,7 @@ public interface StudentDAO {
 	public Set getAllStudents();
 	
 	public String countStudents();
-	public Student getStudentById(Integer id);
+	public Student getStudentById(String id);
 	
 	
 

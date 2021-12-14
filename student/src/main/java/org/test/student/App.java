@@ -22,5 +22,12 @@ public class App
     	
     	studentDAO.getAllStudents();
 //    	addressDAO.getAddressById(1);
+    	
+    	System.out.println(studentDAO.countStudents());
+    	
+    	Student s2 = new Student();
+    	s2 = studentDAO.getStudentById("333");
+    	System.out.println(s2.toString());
+    	
     }
 }
