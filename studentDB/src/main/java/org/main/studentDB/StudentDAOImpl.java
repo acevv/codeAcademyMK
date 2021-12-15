@@ -319,7 +319,7 @@ public class StudentDAOImpl implements StudentDAO {
 			while (rs.next()) {
 				String name = rs.getString(8);
 				String email = rs.getString(9);
-				System.out.println("Name: " + name + ", email: " + email);
+				System.out.println("Studentot: " + Name: " + name + ", email: " + email);
 
 			}
 
