@@ -1,0 +1,5 @@
+1258;Jovan;Jovanovski;655423;jj@gmail.com;Bitola;Matematika,7;Makedonski,5;Istorija,8;Fizika,10;
+1358;Mile;Milevski;215823;milet@gmail.com;Skopje;Matematika,8;Makedonski,6;Istorija,10;Fizika,6;
+1957;Petar;Petkovski;621843;sks2@gmail.com;Veles;Matematika,6;Makedonski,8;Istorija,9;Fizika,6;
+1479;Ana;Anevska;985521;wkd78@gmail.com;Ohrid;Matematika,5;Makedonski,9;Istorija,5;Fizika,7;
+1596;Maja;Marieva;785412;goceto@gmail.com;Bitola;Matematika,8;Makedonski,10;Istorija,10;Fizika,8;
