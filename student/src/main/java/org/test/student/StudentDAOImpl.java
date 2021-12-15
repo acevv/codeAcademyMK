@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class StudentDAOImpl implements StudentDAO {
@@ -63,9 +65,9 @@ public class StudentDAOImpl implements StudentDAO {
 		Integer noOfStudents = 0;
 		try {
 			Statement stmt = conn.createStatement();
-			String query = "SELECT COUNT(*) as students FROM public.student";
+			String query = "SELECT COUNT(*) FROM public.student";
 			ResultSet rs = stmt.executeQuery(query);
-			while (rs.next()) {
+			if (rs.next()) {
 				noOfStudents = rs.getInt(1);
 			}
 			result = "Number of students in the database: " + noOfStudents;
@@ -98,10 +100,10 @@ public class StudentDAOImpl implements StudentDAO {
 	}
 
 	@Override
-	public Set getAllStudents() {
+	public Set<Student> getAllStudents() {
 		Connection conn = JDBCConfig.getConnection();
 
-		Set students = new HashSet();
+		Set<Student> students = new HashSet<Student>();
 		try {
 			Statement stmt = conn.createStatement();
 			String query = "SELECT * FROM public.student;";
@@ -120,6 +122,51 @@ public class StudentDAOImpl implements StudentDAO {
 			System.out.println(e);
 		}
 		return students;
+	}
+
+	@Override
+	public List<Student> getStudentsByMajor(String major) {
+		Connection con = JDBCConfig.getConnection();
+		List<Student> result = new ArrayList<>();
+		try {
+			String query = "SELECT * FROM public.student WHERE major = ?";
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setString(1, major);
+
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Student s = new Student();
+				s.setName(rs.getString("name"));
+				s.setIndeks(rs.getString("indeks"));
+				s.setSurname(rs.getString("surname"));
+				s.setMajor(rs.getString("major"));
+				s.setAddressId(rs.getInt("addressId"));
+				result.add(s);
+			}
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return result;
+	}
+
+	@Override
+	public List<StudentInfo> getStudentInfo() {
+		AddressDAO aDao = new AddressDAOImpl();
+		List<StudentInfo> result = new ArrayList<>();
+
+		Set<Student> allStudents = getAllStudents();
+		for (Student s : allStudents) {
+			StudentInfo sinfo = new StudentInfo();
+			sinfo.setName(s.getName());
+			sinfo.setSurname(s.getSurname());
+			sinfo.setCity(aDao.getAddressById(s.getAddressId()).getCity());
+			sinfo.setStreet(aDao.getAddressById(s.getAddressId()).getStreet());
+			sinfo.setNumber(aDao.getAddressById(s.getAddressId()).getNumber());
+			result.add(sinfo);
+		}
+
+		return result;
 	}
 
 }

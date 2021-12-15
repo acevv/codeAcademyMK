@@ -6,9 +6,13 @@ import java.sql.SQLException;
 
 public class JDBCConfig {
 	
-	private static String jdbcURL = "jdbc:postgresql://localhost:5432/student";
-	private static String jdbcUsername = "postgres";
-	private static String jdbcPassword = "1104";
+	static ConfigurationReader confReader = new ConfigurationReader();
+	
+	
+	private static String jdbcURL = confReader.getProperty("db.url"); 
+			// "jdbc:postgresql://localhost:5432/student";
+	private static String jdbcUsername = confReader.getProperty("db.username");
+	private static String jdbcPassword = confReader.getProperty("db.password");
 
 	public static Connection getConnection() {
 		Connection connection = null;

@@ -51,4 +51,9 @@ public class Address {
 		super();
 	}
 
+	@Override
+	public String toString() {
+		return "Address [id=" + id + ", street=" + street + ", number=" + number + ", city=" + city + "]";
+	}
+
 }
