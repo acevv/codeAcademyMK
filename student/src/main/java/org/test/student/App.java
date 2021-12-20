@@ -4,7 +4,7 @@ import java.util.List;
 
 public class App {
 	public static void main(String[] args) {
-		AddressDAO addressDAO = new AddressDAOImpl();
+//		AddressDAO addressDAO = new AddressDAOImpl();
 //    	System.out.println(addressDAO.createAddressTable());
 
 		StudentDAO studentDAO = new StudentDAOImpl();
@@ -25,11 +25,14 @@ public class App {
 //		s2 = studentDAO.getStudentById("333");
 //		System.out.println(s2.toString());
 
-//		List<Student> studentWithSameMajor = studentDAO.getStudentsByMajor("CS");
-//		for (Student student : studentWithSameMajor) {
-//			System.out.println(student);
-//		}
-		
+		String major = "CS";
+		System.out.println("Students by MAJOR: " + major);
+		List<Student> studentWithSameMajor = studentDAO.getStudentsByMajor(major);
+		for (Student student : studentWithSameMajor) {
+			System.out.println(student);
+		}
+		System.out.println("=======================================");
+
 		List<StudentInfo> studentsInfo = studentDAO.getStudentInfo();
 		for (StudentInfo studentInfo : studentsInfo) {
 			System.out.println(studentInfo);
