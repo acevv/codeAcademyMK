@@ -1,5 +1,9 @@
 package org.main.hibernateRelations.oneToOne;
 
+import java.util.List;
+
+import javax.persistence.Query;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -42,7 +46,19 @@ public class OneToOne {
 			ad.setStudent(s);
 			s.setAddress(ad);
 			// se commita samo Student
-			session.persist(s);  
+//			session.persist(s);  
+
+			String hql = "SELECT s FROM Student s WHERE s.id=:stid";
+			Query query = session.createQuery(hql);
+
+			List<Student> res = query.setParameter("stid", 1L).getResultList();
+			System.out.println(res.get(0).getSurName());
+
+			Address a = res.get(0).getAddress();
+			System.out.println(a.getCity());
+
+//			List<Student> res2 = session.createNamedQuery(("SELECT s FROM Student AS s").list);
+
 			tx.commit();
 
 			factory.close();
