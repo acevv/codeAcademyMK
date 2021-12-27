@@ -1,40 +1,26 @@
- package org.main.highschool.entity;
+package org.main.highschool.entity;
 
 import javax.persistence.*;
-
-import org.main.highschool.SubjectNames;
 
 @Entity
 @Table(name = "profesor")
 public class Profesor {
 
-	@Column(name = "profesorId")
+	@Column(name = "profesor_Id")
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer profesorId;
-	
-	@Column(name = "profesorName")
+
+	@Column(name = "profesor_Name")
 	private String name;
-	
+
 	@Column(name = "subject")
-	private SubjectNames subject;
-	
+	private String subject;
+
 	@Column(name = "email")
 	private String email;
-	
-	@OneToOne(targetEntity = Subject.class, cascade = CascadeType.ALL)
-	private Subject predmet;
 
 	public Integer getProfesorId() {
 		return profesorId;
-	}
-
-	public Subject getPredmet() {
-		return predmet;
-	}
-
-	public void setPredmet(Subject predmet) {
-		this.predmet = predmet;
 	}
 
 	public void setProfesorId(Integer profesorId) {
@@ -49,11 +35,11 @@ public class Profesor {
 		this.name = name;
 	}
 
-	public SubjectNames getSubject() {
+	public String getSubject() {
 		return subject;
 	}
 
-	public void setSubject(SubjectNames subject) {
+	public void setSubject(String subject) {
 		this.subject = subject;
 	}
 
@@ -65,8 +51,9 @@ public class Profesor {
 		this.email = email;
 	}
 
-	public Profesor(String name, SubjectNames subject, String email) {
+	public Profesor(Integer profesorId, String name, String subject, String email) {
 		super();
+		this.profesorId = profesorId;
 		this.name = name;
 		this.subject = subject;
 		this.email = email;
@@ -75,9 +62,5 @@ public class Profesor {
 	public Profesor() {
 		super();
 	}
-
-	
-
-
 
 }

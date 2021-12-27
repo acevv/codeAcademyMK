@@ -1,0 +1,7 @@
+1258;569;Matematika;7;654;Makedonski;5;890;Istorija;8;315;Fizika;10;
+1358;569;Matematika;8;652;Makedonski;6;890;Istorija;10;317;Fizika;6;
+1957;567;Matematika;6;652;Makedonski;8;890;Istorija;9;315;Fizika;6;
+1479;569;Matematika;5;654;Makedonski;9;890;Istorija;5;315;Fizika;7;
+1596;567;Matematika;5;654;Makedonski;10;890;Istorija;10;317;Fizika;8;
+1425;569;Matematika;8;652;Makedonski;5;890;Istorija;8;315;Fizika;6;
+1954;567;Matematika;7;652;Makedonski;9;890;Istorija;7;317;Fizika;7;

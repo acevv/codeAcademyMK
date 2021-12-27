@@ -1,0 +1,7 @@
+567;Goce;Matematika;goce@email.com;
+654;Mile;Makedonski;mile@email.com;
+315;Pero;Fizika;pero@email.com;
+890;Laze;Istorija;laze@email.com;
+569;Mira;Matematika;mira@email.com;
+652;Mare;Makedonski;mare@email.com;
+317;Kole;Fizika;kole@email.com;

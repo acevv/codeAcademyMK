@@ -15,19 +15,23 @@ public class Student {
 	@Id
 	private Integer index;
 
-	@Column(name = "firstName")
+	@Column(name = "first_name")
 	private String name;
 
-	@Column(name = "surName")
+	@Column(name = "last_name")
 	private String surname;
 
+	@Column(name = "email")
+	private String email;
+
 	@Column(name = "city")
-	private City city;
+	private String city;
 
 	@ManyToMany(targetEntity = Subject.class, cascade = { CascadeType.ALL })
-	@JoinTable(name = "studentSubject", joinColumns = { @JoinColumn(name = "index") }, inverseJoinColumns = {
-			@JoinColumn(name = "subjectId") })
-	private List<Subject> subjects = new ArrayList<>();
+	@JoinTable(name = "studentSubject", 
+	joinColumns = {	@JoinColumn(name = "index") }, 
+	inverseJoinColumns = { @JoinColumn(name = "subject_id") })
+	private List<Subject> subjects;
 
 	public Integer getIndex() {
 		return index;
@@ -53,11 +57,19 @@ public class Student {
 		this.surname = surname;
 	}
 
-	public City getCity() {
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getCity() {
 		return city;
 	}
 
-	public void setCity(City city) {
+	public void setCity(String city) {
 		this.city = city;
 	}
 
@@ -69,13 +81,14 @@ public class Student {
 		this.subjects = subjects;
 	}
 
-	public Student(Integer index, String name, String surname, City city, List<Subject> subjects) {
+	public Student(Integer index, String name, String surname, String email, String city) {
 		super();
 		this.index = index;
 		this.name = name;
 		this.surname = surname;
+		this.email = email;
 		this.city = city;
-		this.subjects = subjects;
+
 	}
 
 	public Student() {

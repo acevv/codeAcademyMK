@@ -1,5 +1,7 @@
 package org.main.highschool.entity;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 import org.main.highschool.SubjectNames;
@@ -13,17 +15,15 @@ public class Subject {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer subjectId;
 
-	@Column(name = "subjectName")
-	private SubjectNames predmet;
+	@Column(name = "subject_name")
+	private String predmet;
 
-	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "subject_id")
+	private List<Profesor> profesor;
+
 	private Integer ocenka;
-
-	@Column(name = "profesorId")
-	private Integer profesorId;
-	
-	@OneToOne(targetEntity = Profesor.class)
-	private Profesor profesor;
+	private boolean polozen;
 
 	public Integer getSubjectId() {
 		return subjectId;
@@ -33,12 +33,20 @@ public class Subject {
 		this.subjectId = subjectId;
 	}
 
-	public SubjectNames getPredmet() {
+	public String getPredmet() {
 		return predmet;
 	}
 
-	public void setPredmet(SubjectNames predmet) {
+	public void setPredmet(String predmet) {
 		this.predmet = predmet;
+	}
+
+	public List<Profesor> getProfesor() {
+		return profesor;
+	}
+
+	public void setProfesor(List<Profesor> profesor) {
+		this.profesor = profesor;
 	}
 
 	public Integer getOcenka() {
@@ -49,20 +57,17 @@ public class Subject {
 		this.ocenka = ocenka;
 	}
 
-	public Integer getProfesorId() {
-		return profesorId;
+	public boolean isPolozen() {
+		return polozen;
 	}
 
-	public void setProfesorId(Integer profesorId) {
-		this.profesorId = profesorId;
+	public void setPolozen(boolean polozen) {
+		this.polozen = polozen;
 	}
 
-	public Subject(SubjectNames predmet, Integer ocenka, Integer profesorId) {
+	public Subject(String predmet) {
 		super();
 		this.predmet = predmet;
-		this.ocenka = ocenka;
-
-		this.profesorId = profesorId;
 	}
 
 	public Subject() {
