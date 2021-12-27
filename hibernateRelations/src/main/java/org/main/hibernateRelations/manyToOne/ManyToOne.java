@@ -3,12 +3,14 @@ package org.main.hibernateRelations.manyToOne;
 import java.sql.Date;
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Restrictions;
 import org.main.hibernateRelations.manyToOne.entity.Department;
 import org.main.hibernateRelations.manyToOne.entity.Employee;
 import org.main.hibernateRelations.manyToOne.entity.Project;
@@ -35,11 +37,11 @@ public class ManyToOne {
 			// Many to one relation
 
 			Project p1 = new Project("IoT", "About IoT project");
-			session.save(p1);
+//			session.save(p1);
 
 			Department d1 = new Department("IoT", 10);
 			d1.setProject(p1);
-			session.save(d1);
+//			session.save(d1);
 
 			Date date = new Date(System.currentTimeMillis());
 
@@ -52,13 +54,25 @@ public class ManyToOne {
 //			session.save(e1);
 //			session.save(e2);
 
-			findEmployeeData(2L, session);
-			
+//			findEmployeeData(2L, session);
+
 //			String hqlJoin = "SELECT e d FROM Employee e JOIN e.Department d WHERE e.id=d.id";
+
+			// Find all employees working on the same project -1
+			List<Employee> result = findEmployeesOnaSameProject(3L, session);
+			System.out.println(result.get(0).getName());
+			for (Employee employee : result) {
+				System.out.println(employee.getName());
+				
+			}
 			
-			// Find all employees working on the same project              -1
-			// Find all employees working in predefined Department         -2
-			// Find all employees working in same Department               -3
+			// Find all employees working in predefined Department -2
+//			List<Employee> res2 = findEmployeesInSameDepartment(3L, session);
+//			for (Employee employee : res2) {
+//				System.out.println(employee.getName());
+//			}
+			
+			// Find all employees working in same Department -3
 
 			tx.commit();
 
@@ -69,6 +83,25 @@ public class ManyToOne {
 			tx.rollback();
 			System.out.println(e);
 		}
+
+	}
+
+	private static List<Employee> findEmployeesInSameDepartment(Long deptid, Session session) {
+		String hql = "SELECT e FROM Employee e JOIN e.department d WHERE d.id=:deptid";
+
+		Query query = session.createQuery(hql);
+		List<Employee> result = query.setParameter("deptid", deptid).list();
+		return result;
+ 		
+	}
+
+	private static List<Employee> findEmployeesOnaSameProject(Long deptid, Session session) {
+
+		String hql = "SELECT e FROM Employee e JOIN e.department d JOIN d.project p WHERE d.id=:deptid and p.id=d.id";
+		Query query = session.createQuery(hql);
+		List<Employee> result = query.setParameter("deptid", deptid).list();
+		return result;
+		
 
 	}
 
