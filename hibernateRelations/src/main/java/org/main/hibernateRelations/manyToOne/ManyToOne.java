@@ -83,12 +83,11 @@ public class ManyToOne {
 			System.out.println("=============================assignment-3==========================");
 // Find all employees working in same Department -3  COMPLETED
 
-			List<Employee> empByDept = findEmployeesInDept(session);
+			findEmployeesInDept(session);
 
 			tx.commit();
 			factory.close();
 			session.close();
-			
 
 		} catch (HibernateException e) {
 			tx.rollback();
@@ -97,7 +96,7 @@ public class ManyToOne {
 
 	}
 
-	private static List<Employee> findEmployeesInDept(Session session) {
+	private static void findEmployeesInDept(Session session) {
 		String hql = "SELECT d FROM Department d";
 		Query query = session.createQuery(hql);
 		List<Department> departments = query.list();
@@ -113,9 +112,6 @@ public class ManyToOne {
 			}
 			System.out.println("");
 		}
-
-		return null;
-
 	}
 
 	private static List<Employee> findEmployeesInPredifnedDepartment(Session session, Long department) {
