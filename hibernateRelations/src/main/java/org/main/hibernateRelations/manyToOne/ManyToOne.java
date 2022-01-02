@@ -56,49 +56,65 @@ public class ManyToOne {
 
 //			findEmployeeData(2L, session);
 
-
-
-			
 // Find all employees working on the same project -1 COMPLETED!
-			
+
 			Long projectId = 21L;
 			List<Employee> result = findEmployeesOnaSameProject(projectId, session);
 			String pName = result.get(0).getDepartment().getProject().getDescription();
 
+			System.out.println("=============================assignment-1==========================");
 			System.out.print("Employees working on Project \"" + pName + "\" are: ");
 			for (Employee employee : result) {
 				System.out.print(employee.getName() + ", ");
 			}
 			System.out.println("");
 
+			System.out.println("=============================assignment-2==========================");
 // Find all employees working in predefined Department -2
-			
+
 			Long department = 21L;
-			List<Employee> empByDept = findEmployeesInPredifnedDepartment(session, department);
+			List<Employee> empByGivenDept = findEmployeesInPredifnedDepartment(session, department);
 			System.out.print("All employees working in department " + department + " are: ");
-			for (Employee employee : empByDept) {
+			for (Employee employee : empByGivenDept) {
 				System.out.print(employee.getName() + ", ");
 			}
 			System.out.println("");
-			
+
+			System.out.println("=============================assignment-3==========================");
 // Find all employees working in same Department -3  COMPLETED
 
-			
+			List<Employee> empByDept = findEmployeesInDept(session);
 
-			
-			
-			
-			
-			
-			
 			tx.commit();
 			factory.close();
 			session.close();
+			
 
 		} catch (HibernateException e) {
 			tx.rollback();
 			System.out.println(e);
 		}
+
+	}
+
+	private static List<Employee> findEmployeesInDept(Session session) {
+		String hql = "SELECT d FROM Department d";
+		Query query = session.createQuery(hql);
+		List<Department> departments = query.list();
+		for (int i = 0; i < departments.size(); i++) {
+
+			String hql2 = "SELECT e FROM Employee e JOIN e.department d WHERE d.id=:deptid";
+			Query query2 = session.createQuery(hql2);
+			List<Employee> result = query2.setParameter("deptid", departments.get(i).getId()).list();
+			System.out.print("Employees working in DEPT \"" + departments.get(i).getDeptName() + "\" are: ");
+			for (Employee e : result) {
+
+				System.out.print(e.getName() + ", ");
+			}
+			System.out.println("");
+		}
+
+		return null;
 
 	}
 
