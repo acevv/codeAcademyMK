@@ -56,26 +56,42 @@ public class ManyToOne {
 
 //			findEmployeeData(2L, session);
 
-//			String hqlJoin = "SELECT e d FROM Employee e JOIN e.Department d WHERE e.id=d.id";
 
-			// Find all employees working on the same project -1
-			List<Employee> result = findEmployeesOnaSameProject(3L, session);
-			System.out.println(result.get(0).getName());
+
+			
+// Find all employees working on the same project -1 COMPLETED!
+			
+			Long projectId = 21L;
+			List<Employee> result = findEmployeesOnaSameProject(projectId, session);
+			String pName = result.get(0).getDepartment().getProject().getDescription();
+
+			System.out.print("Employees working on Project \"" + pName + "\" are: ");
 			for (Employee employee : result) {
-				System.out.println(employee.getName());
-				
+				System.out.print(employee.getName() + ", ");
 			}
-			
-			// Find all employees working in predefined Department -2
-//			List<Employee> res2 = findEmployeesInSameDepartment(3L, session);
-//			for (Employee employee : res2) {
-//				System.out.println(employee.getName());
-//			}
-			
-			// Find all employees working in same Department -3
+			System.out.println("");
 
+// Find all employees working in predefined Department -2
+			
+			Long department = 21L;
+			List<Employee> empByDept = findEmployeesInPredifnedDepartment(session, department);
+			System.out.print("All employees working in department " + department + " are: ");
+			for (Employee employee : empByDept) {
+				System.out.print(employee.getName() + ", ");
+			}
+			System.out.println("");
+			
+// Find all employees working in same Department -3  COMPLETED
+
+			
+
+			
+			
+			
+			
+			
+			
 			tx.commit();
-
 			factory.close();
 			session.close();
 
@@ -86,22 +102,22 @@ public class ManyToOne {
 
 	}
 
-	private static List<Employee> findEmployeesInSameDepartment(Long deptid, Session session) {
+	private static List<Employee> findEmployeesInPredifnedDepartment(Session session, Long department) {
 		String hql = "SELECT e FROM Employee e JOIN e.department d WHERE d.id=:deptid";
 
 		Query query = session.createQuery(hql);
-		List<Employee> result = query.setParameter("deptid", deptid).list();
+		List<Employee> result = query.setParameter("deptid", department).list();
+
 		return result;
- 		
+
 	}
 
-	private static List<Employee> findEmployeesOnaSameProject(Long deptid, Session session) {
+	private static List<Employee> findEmployeesOnaSameProject(Long projectId, Session session) {
 
 		String hql = "SELECT e FROM Employee e JOIN e.department d JOIN d.project p WHERE d.id=:deptid and p.id=d.id";
 		Query query = session.createQuery(hql);
-		List<Employee> result = query.setParameter("deptid", deptid).list();
+		List<Employee> result = query.setParameter("deptid", projectId).list();
 		return result;
-		
 
 	}
 

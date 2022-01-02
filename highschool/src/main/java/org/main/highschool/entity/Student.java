@@ -28,9 +28,8 @@ public class Student {
 	private String city;
 
 	@ManyToMany(targetEntity = Subject.class, cascade = { CascadeType.ALL })
-	@JoinTable(name = "studentSubject", 
-	joinColumns = {	@JoinColumn(name = "index") }, 
-	inverseJoinColumns = { @JoinColumn(name = "subject_id") })
+	@JoinTable(name = "studentSubject", joinColumns = { @JoinColumn(name = "index") }, inverseJoinColumns = {
+			@JoinColumn(name = "subject_id") })
 	private List<Subject> subjects;
 
 	public Integer getIndex() {

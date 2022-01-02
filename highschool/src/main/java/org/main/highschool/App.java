@@ -8,6 +8,7 @@ public class App {
 		Controller c = new Controller();
 		
 		c.openSession();
+		System.out.println();
 		
 
 	}
