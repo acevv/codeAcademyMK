@@ -6,6 +6,7 @@ import java.util.List;
 import javax.jws.WebService;
 
 import org.test.soapExample.entity.Person;
+import org.test.soapExample.entity.PersonDAO;
 
 @WebService(endpointInterface = "org.test.soapExample.services.PersonService")
 public class PersonServiceImpl implements PersonService {
@@ -15,8 +16,7 @@ public class PersonServiceImpl implements PersonService {
 	public PersonServiceImpl() {
 		initCatalog();
 	}
-	
-	
+
 	private void initCatalog() {
 		if (personCatalog == null) {
 			personCatalog = new ArrayList<Person>();
@@ -30,24 +30,19 @@ public class PersonServiceImpl implements PersonService {
 
 	public String insertPerson(Person person) {
 
-		personCatalog.add(person);
+		String result = PersonDAO.openSession(person);
 
-		return "Person inserted";
+		return result;
 	}
 
 	public Person findPersonById(Integer id) {
-		for (Person person : personCatalog) {
-			if (person.getId().equals(id)) {
-				return person;
-			}
-		}
 
-		return null;
+		return PersonDAO.findByID(id);
 	}
 
 	public List<Person> getAll() {
 
-		return personCatalog;
+		return PersonDAO.getAllFromDB();
 	}
 
 }

@@ -1,11 +1,39 @@
 package org.test.soapExample.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "person")
 public class Person {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+
+	@Column(name = "first_name")
 	private String fName;
+
+	@Column(name = "last_name")
 	private String lName;
+
+	@Column(name = "location")
 	private String location;
+
+//	@Column(name = "address")
+//	private Address address;
+
+//	public Address getAddress() {
+//		return address;
+//	}
+//
+//	public void setAddress(Address address) {
+//		this.address = address;
+//	}
 
 	public Integer getId() {
 		return id;
