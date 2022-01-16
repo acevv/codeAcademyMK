@@ -1,7 +1,11 @@
 package org.test.company.service;
 
+import org.hibernate.Session;
+
 public interface CompanyService {
 
-	public void openSession();
+	public Session openSession();
+
+	public void addData();
 
 }

@@ -1,15 +1,17 @@
 package org.test.company.entity;
 
 import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "dependent")
-public class Dependent {
+public class Dependent  {
 
 	@EmbeddedId
 	private DependentId dependentId;
@@ -20,8 +22,12 @@ public class Dependent {
 	@Column(name = "birth_date")
 	private Date dependentDate;
 
-	@Column(name = "relation")
+	@Column(name = "relationship")
 	private String relation;
+
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@MapsId("employeeId")
+	private Employee employee;
 
 	public DependentId getDependentId() {
 		return dependentId;
@@ -55,12 +61,13 @@ public class Dependent {
 		this.relation = relation;
 	}
 
-	public Dependent(DependentId dependentId, char dependentSex, Date dependentDate, String relation) {
+	public Dependent(char dependentSex, Date dependentDate, String relation, Employee employee, String name) {
 		super();
-		this.dependentId = dependentId;
+
 		this.dependentSex = dependentSex;
 		this.dependentDate = dependentDate;
 		this.relation = relation;
+		this.dependentId = new DependentId(employee.getSsn(), name);
 	}
 
 	public Dependent() {

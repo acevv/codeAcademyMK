@@ -43,32 +43,15 @@ public class Employee {
 	@Column(name = "salary")
 	private Integer salary;
 
-	@Column(name = "super_ssn")
+	@Column(name = "super_ssn", nullable = true)
 	private long superSsn;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn
 	private Departmnet department;
 
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "employee_ssn")
-	private List<Dependent> dependents;
-	
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "employee")
 	private List<WorksOn> worksOn;
-
-	
-	public List<Dependent> getDependents() {
-		return dependents;
-	}
-
-	public void setDependents(List<Dependent> dependents) {
-		this.dependents = dependents;
-	}
-
-	public List<WorksOn> getWorksOn() {
-		return worksOn;
-	}
 
 	public void setWorksOn(List<WorksOn> worksOn) {
 		this.worksOn = worksOn;
