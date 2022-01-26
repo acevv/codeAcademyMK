@@ -1,8 +1,8 @@
 package org.main.library.service;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
-
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -11,6 +11,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.main.library.entity.Book;
 import org.main.library.entity.Borrows;
+import org.main.library.entity.BorrowsDTO;
 import org.main.library.entity.Member;
 import org.main.library.entity.Publisher;
 
@@ -93,12 +94,12 @@ public class LibraryDAO {
 		}
 	}
 
-	public static void insertBorrows(String memberId, String bookId) {
+	public static void insertBorrows(BorrowsDTO borrowsDTO) {
 
 		Session s = initDB();
 
-		Book book = getBook(bookId);
-		Member member = getMember(memberId);
+		Book book = getBook(borrowsDTO.getBookId());
+		Member member = getMember(borrowsDTO.getMemberId());
 
 		try {
 			tx = s.beginTransaction();
@@ -107,11 +108,12 @@ public class LibraryDAO {
 			Date initDate = new Date(time);
 			Date expireDate = new Date(time);
 
-			expireDate.setMonth(initDate.getDay() + 14);
+			expireDate.setDate(initDate.getDay() + 14);
 
-			Borrows borrows = new Borrows();
+			Borrows borrows = new Borrows(member, book);
 			borrows.setIssue(initDate);
 			borrows.setDueDate(expireDate);
+			borrows.setReturned(false);
 
 			book.setQuantity(book.getQuantity() - 1);
 
@@ -125,6 +127,54 @@ public class LibraryDAO {
 			tx.rollback();
 			System.out.println(e);
 		}
+	}
+
+	public static void insertReturned(BorrowsDTO borrowsDTO) {
+
+		Book book = getBook(borrowsDTO.getBookId());
+
+		Borrows borrows = getBorrows(borrowsDTO.getMemberId());
+
+		try {
+			Session s = initDB();
+			tx = s.beginTransaction();
+
+			borrows.setReturned(true);
+
+			book.setQuantity(book.getQuantity() + 1);
+
+			s.update(borrows);
+			tx.commit();
+			s.close();
+
+			s = initDB();
+			tx = s.beginTransaction();
+			s.update(book);
+
+			tx.commit();
+			s.close();
+
+		} catch (HibernateException e) {
+			tx.rollback();
+			System.out.println(e);
+		}
+	}
+
+	public static Borrows getBorrows(String id) {
+
+		List<Borrows> result = new ArrayList<>();
+
+		try {
+
+			Session s = initDB();
+
+			result = s.createNativeQuery("SELECT * FROM Borrows WHERE member_member_id='" + id + "';", Borrows.class)
+					.list();
+
+		} catch (HibernateException e) {
+			System.out.println(e);
+		}
+		return result.get(0);
 	}
 
 	public static Book getBook(String id) {
@@ -166,4 +216,45 @@ public class LibraryDAO {
 		return results.get(0);
 
 	}
+
+	public static List<Book> getBooks() {
+
+		Session session = initDB();
+
+		try {
+
+			String hql = "FROM Book B";
+			Query query = session.createQuery(hql);
+
+			List<Book> books = query.list();
+
+			return books;
+
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
+	public static List<Member> getMembers() {
+
+		Session session = initDB();
+
+		try {
+
+			String hql = "FROM Members M";
+			Query query = session.createQuery(hql);
+
+			List<Member> members = query.list();
+
+			return members;
+
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
 }

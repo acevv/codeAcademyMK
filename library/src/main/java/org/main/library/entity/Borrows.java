@@ -15,31 +15,53 @@ public class Borrows {
 
 	@EmbeddedId
 	private BorrowsId borrowsId;
-	
+
 	@ManyToOne(cascade = CascadeType.ALL)
 	@MapsId("memberId")
 	private Member member;
-	
+
 	@ManyToOne(cascade = CascadeType.ALL)
 	@MapsId("bookId")
 	private Book book;
-	
-	@Column(name  = "dueDate")
+
+	@Column(name = "dueDate")
 	private Date dueDate;
-	
+
 	@Column(name = "issueDate")
 	private Date issueDate;
-	
+
+	@Column(name = "returned")
+	private Boolean returned;
+
+	public Boolean getReturned() {
+		return returned;
+	}
+
+	public void setReturned(Boolean returned) {
+		this.returned = returned;
+	}
+
 	public Borrows() {
 		super();
 	}
 
+	public Borrows(Member member, Book book) {
+		super();
+		this.borrowsId = new BorrowsId(member.getId(), book.getId());
+		this.member = member;
+		this.book = book;
+	}
+
+	public void setBorrowsId(BorrowsId borrowsId) {
+		this.borrowsId = borrowsId;
+	}
+
 	public Borrows(Member member, Book book, Date issueDate) {
 		super();
-		this.member=member;
-		this.book=book;
+		this.member = member;
+		this.book = book;
 		this.issueDate = issueDate;
-		this.borrowsId = new BorrowsId(member.getId(),book.getId());
+		this.borrowsId = new BorrowsId(member.getId(), book.getId());
 	}
 
 	public Member getMember() {
@@ -72,7 +94,6 @@ public class Borrows {
 
 	public void setIssue(Date issue) {
 		this.issueDate = issue;
-	}	
-	
-}
+	}
 
+}

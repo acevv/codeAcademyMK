@@ -2,15 +2,18 @@ package org.main.library.service;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import org.main.library.entity.Book;
+import org.main.library.entity.BorrowsDTO;
 import org.main.library.entity.Member;
 import org.main.library.entity.Publisher;
 
@@ -69,23 +72,38 @@ public class LibraryService {
 		}
 	}
 
-	
-
-//	@POST
-//	@Path("/insertBorrows/mid={id}")
-//	@Consumes(MediaType.APPLICATION_JSON)
-	public String insertBorrows(String memberId, String bookId) {
+	@POST
+	@Path("/createBorrows")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public String insertBorrows(BorrowsDTO borrowsDTO) {
 
 		try {
 
-			LibraryDAO.insertBorrows(memberId, bookId);
+			LibraryDAO.insertBorrows(borrowsDTO);
 
-			return "Member ID: " + memberId + " borrowed book with iD: " + bookId;
+			return "Member ID: " + borrowsDTO.getMemberId() + " borrowed book with iD: " + borrowsDTO.getBookId();
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 		return "No book or member with that ID found!";
 
+	}
+
+	@POST
+	@Path("/createReturned")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public String createReturns(BorrowsDTO borrowsDTO) {
+
+		try {
+
+			LibraryDAO.insertReturned(borrowsDTO);
+
+			return "Member : " + LibraryDAO.getMember(borrowsDTO.getMemberId()).getFullname()
+					+ " returned book with title: " + LibraryDAO.getBook(borrowsDTO.getBookId()).getTitle();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return "No book or member with that ID found!";
 	}
 
 	@GET
@@ -96,6 +114,28 @@ public class LibraryService {
 		Date d = new Date(m);
 		LocalDate ld = LocalDate.now();
 		return "Hello, World!  " + d.toString();
+	}
+
+	@GET
+	@Path("/getAllBooks")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Book> getAllBooks() {
+
+		List<Book> books = LibraryDAO.getBooks();
+
+		return books;
+
+	}
+
+	@GET
+	@Path("/getAllMembers")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Member> getAllMembers() {
+
+		List<Member> members = LibraryDAO.getMembers();
+
+		return members;
+
 	}
 
 }
