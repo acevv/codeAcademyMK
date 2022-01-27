@@ -57,7 +57,7 @@ public class App {
 
 			tx = session.beginTransaction();
 
-			loadMockData(session);
+//			loadMockData(session);
 
 //			getAllEmployeesByProject(session);
 
@@ -77,14 +77,15 @@ public class App {
 	}
 
 	private static void getAllEmployeesByDepartment(Session session) {
-				
-		List<Employee> allEmployees = session.createNativeQuery("SELECT * FROM public.employee;", Employee.class).list();
-		
+
+		List<Employee> allEmployees = session.createNativeQuery("SELECT * FROM public.employee;", Employee.class)
+				.list();
+
 		Set<Department> departments = new HashSet<>();
 		allEmployees.forEach(empl -> departments.add(empl.getDno()));
-		
+
 		Map<Department, List<Employee>> employeesByDepartment = new HashMap<>();
-		
+
 		// populating the hashmap with employees
 		for (Department department : departments) {
 			List<Employee> employees = new ArrayList<>();
@@ -95,8 +96,8 @@ public class App {
 			}
 			employeesByDepartment.put(department, employees);
 		}
-		
-		//printing employees by department
+
+		// printing employees by department
 		for (Department department : departments) {
 			System.out.println("In department " + department.getDname() + " (dep no. " + department.getDnumber()
 					+ ") are working:");
@@ -119,12 +120,12 @@ public class App {
 		String hqlWorksOn = "SELECT w FROM WorksOn w";
 		Query queryWorksOn = session.createQuery(hqlWorksOn);
 		List<WorksOn> worksOn = queryWorksOn.list();
-		
+
 		Set<Project> projects = new HashSet<>();
 		worksOn.forEach(w -> projects.add(w.getEmployeeProject().getProject()));
 
 		Map<Project, List<Employee>> employeesByProject = new HashMap<>();
-		
+
 		// populating hashmap with employees
 		for (Project project : projects) {
 			List<Employee> employees = new ArrayList<>();
@@ -219,7 +220,7 @@ public class App {
 		for (int j = 0; j < numOfDepartments; j++) {
 			Department dpt = departments.get(j);
 			dpt.setMgrStartDate(MockData.randDateBetween(MockData.mgrStartDate, MockData.mgrEndDate));
-			dpt.setMgrssn(employees.get(j * 4));
+			dpt.setMgrssn(employees.get(j * 5));
 
 			// set dept_location data
 			if (j == 0 || j == 2) {
