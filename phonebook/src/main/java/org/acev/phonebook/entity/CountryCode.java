@@ -14,7 +14,7 @@ public class CountryCode {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	private Integer countryCode;
+	private String countryCode;
 	private String countryName;
 
 	public Integer getId() {
@@ -25,11 +25,11 @@ public class CountryCode {
 		this.id = id;
 	}
 
-	public Integer getCountryCode() {
+	public String getCountryCode() {
 		return countryCode;
 	}
 
-	public void setCountryCode(Integer countryCode) {
+	public void setCountryCode(String countryCode) {
 		this.countryCode = countryCode;
 	}
 
@@ -41,9 +41,9 @@ public class CountryCode {
 		this.countryName = countryName;
 	}
 
-	public CountryCode(Integer id, Integer countryCode, String countryName) {
+	public CountryCode(String countryCode, String countryName) {
 		super();
-		this.id = id;
+
 		this.countryCode = countryCode;
 		this.countryName = countryName;
 	}

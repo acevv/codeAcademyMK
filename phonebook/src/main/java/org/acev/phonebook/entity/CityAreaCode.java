@@ -13,8 +13,8 @@ public class CityAreaCode {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private Integer cityAreaCode;
-	private Integer cityLocalAreaCode;
+	private String cityAreaCode;
+	private String cityLocalAreaCode;
 	private String cityName;
 
 	public Integer getId() {
@@ -25,19 +25,19 @@ public class CityAreaCode {
 		this.id = id;
 	}
 
-	public Integer getCityAreaCode() {
+	public String getCityAreaCode() {
 		return cityAreaCode;
 	}
 
-	public void setCityAreaCode(Integer cityAreaCode) {
+	public void setCityAreaCode(String cityAreaCode) {
 		this.cityAreaCode = cityAreaCode;
 	}
 
-	public Integer getCityLocalAreaCode() {
+	public String getCityLocalAreaCode() {
 		return cityLocalAreaCode;
 	}
 
-	public void setCityLocalAreaCode(Integer cityLocalAreaCode) {
+	public void setCityLocalAreaCode(String cityLocalAreaCode) {
 		this.cityLocalAreaCode = cityLocalAreaCode;
 	}
 
@@ -49,9 +49,9 @@ public class CityAreaCode {
 		this.cityName = cityName;
 	}
 
-	public CityAreaCode(Integer id, Integer cityAreaCode, Integer cityLocalAreaCode, String cityName) {
+	public CityAreaCode(String cityAreaCode, String cityLocalAreaCode, String cityName) {
 		super();
-		this.id = id;
+
 		this.cityAreaCode = cityAreaCode;
 		this.cityLocalAreaCode = cityLocalAreaCode;
 		this.cityName = cityName;

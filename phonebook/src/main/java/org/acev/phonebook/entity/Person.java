@@ -9,16 +9,16 @@ import javax.persistence.Table;
 public class Person {
 
 	@Id
-	private String embg;
+	private Long embg;
 
 	private String firstName;
 	private String lastName;
 
-	public String getEmbg() {
+	public Long getEmbg() {
 		return embg;
 	}
 
-	public void setEmbg(String embg) {
+	public void setEmbg(Long embg) {
 		this.embg = embg;
 	}
 
@@ -38,7 +38,7 @@ public class Person {
 		this.lastName = lastName;
 	}
 
-	public Person(String embg, String firstName, String lastName) {
+	public Person(Long embg, String firstName, String lastName) {
 		super();
 		this.embg = embg;
 		this.firstName = firstName;

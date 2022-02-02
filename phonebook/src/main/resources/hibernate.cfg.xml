@@ -4,7 +4,6 @@
           "http://www.hibernate.org/dtd/hibernate-configuration-5.3.dtd">
 
 <hibernate-configuration>
-
 	<session-factory>
 		<property name="hbm2ddl.auto">update</property>
 		<property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>

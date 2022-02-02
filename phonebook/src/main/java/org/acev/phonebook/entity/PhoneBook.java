@@ -11,7 +11,7 @@ import javax.persistence.Table;
 public class PhoneBook {
 
 	@Id
-	private Integer phoneNumber;
+	private String phoneNumber;
 
 	@ManyToOne
 	@JoinColumn(name = "person_id")
@@ -25,11 +25,11 @@ public class PhoneBook {
 	@JoinColumn(name = "city_code")
 	private CityAreaCode cityAreaCode;
 
-	public Integer getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(Integer phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 
@@ -57,7 +57,7 @@ public class PhoneBook {
 		this.cityAreaCode = cityAreaCode;
 	}
 
-	public PhoneBook(Integer phoneNumber, Person person, CountryCode countryCode, CityAreaCode cityAreaCode) {
+	public PhoneBook(String phoneNumber, Person person, CountryCode countryCode, CityAreaCode cityAreaCode) {
 		super();
 		this.phoneNumber = phoneNumber;
 		this.person = person;
