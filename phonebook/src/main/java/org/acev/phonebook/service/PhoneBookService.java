@@ -49,7 +49,7 @@ public class PhoneBookService {
 			return "Update success";
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "Fail to ubdate!";
+			return "Fail to update!";
 		}
 
 	}

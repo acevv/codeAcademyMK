@@ -263,10 +263,10 @@ public class PhonebookDAO {
 				pb.setCityAreaCode(cityCode);
 				pb.setCountryCode(countryCode);
 				pb.setPhoneNumber(contact.getPhoneNumber());
+				s.save(pb);
 
 			}
 
-			s.save(pb);
 			s.update(p);
 			s.update(ad);
 
