@@ -116,6 +116,9 @@ public class PhonebookDAO {
 		if (code.contains("389")) {
 			countryCode.setCountryCode(code);
 			countryCode.setCountryName("Macedonia");
+		} else { 
+			countryCode.setCountryCode(code);
+			countryCode.setCountryName("Not Macedonia");
 		}
 
 		return countryCode;
