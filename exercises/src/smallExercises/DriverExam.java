@@ -6,6 +6,7 @@ public class DriverExam {
 
 		try {
 			exercise.start();
+			exercise.execute();
 		} catch (Exception e) {
 			exercise.markNegativePoints();
 		} finally {
